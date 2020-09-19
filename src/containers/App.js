@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CardList from '../components/CardList';
 import Scroll from '../components/Scroll'
 import SearchBox from '../components/SearchBox';
+import ErrorBoundry from '../components/ErrorBoundry';
 import './App.css';
 
 class App extends Component{
@@ -41,7 +42,9 @@ class App extends Component{
         <h1 className='f1'>RoboFriendz</h1>
         <SearchBox searchChange={this.onSearchChange}/> // We are passing onSearchChange function to SearchBox component so that this can be used as props in searchBox file
         <Scroll>
-          <CardList robots = {filteredRobots}/>
+          <ErrorBoundry>
+            <CardList robots = {filteredRobots}/>
+          </ErrorBoundry>  
         </Scroll>
       </div>
     );
